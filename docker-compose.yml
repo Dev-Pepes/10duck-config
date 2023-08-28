@@ -1,0 +1,12 @@
+services:
+  boot:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: boot
+    restart: always
+    ports:
+      - 8888:8888
+    volumes:
+      - ./:/app/
+
