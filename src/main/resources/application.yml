@@ -1,0 +1,31 @@
+server:
+  port: 8888
+  shutdown: graceful
+
+spring:
+  application:
+    name: "config-server"
+  cloud:
+    config:
+      server:
+        git:
+          uri: git@github.com:Dev-Pepes/configFiles.git
+          default-label: main
+          search-paths: /**
+          clone-on-start: true
+          ignore-local-ssh-settings: true
+          private-key: |
+            -----BEGIN EC PRIVATE KEY-----
+            MHcCAQEEIGE1Y32YVfqbKi6BqgrRrWgY/npTfjxAmSWfTKP2r2aQoAoGCCqGSM49
+            AwEHoUQDQgAEJlyc0UmWUKO9WSPWpPZTuYsuEyrfXzFfXS0M2bP4AsXb8nU/hnoQ
+            e8ZbRve5mt+j8+eEM3jP3sLHc29GBp2clg==
+            -----END EC PRIVATE KEY-----
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    shutdown:
+      enabled: true
